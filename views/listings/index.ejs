@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelNest</title>
-</head>
+<% layout('/layouts/boilerplate') -%>
 <body>
     <h3>All Listings of hotels</h3>
     <ul>
@@ -12,8 +6,7 @@
             <li><a href = "/listings/<%= listing._id %>"><%= listing.title %></a></li>
         <% } %>
     </ul>
-    <form method="GET" action="/listings/new">
+    <!-- <form method="GET" action="/listings/new">
         <button>Add a new listing!</button>
-    </form>
+    </form> -->
 </body>
-</html>
