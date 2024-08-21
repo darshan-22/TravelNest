@@ -1,5 +1,13 @@
-.container {
+body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
+    display:flex;
+    flex-direction: column;
+    min-height:100vh;
+
+}
+
+.container {
+    flex:1;
 }
 
 /* NavBar */
@@ -36,8 +44,9 @@
 }
 
 .f-info-socials i {
-    font-size: 1.2rems;
+    font-size: 1.3rem;
     margin-right: 0.5rem;
+    color: rgb(0, 0, 0);
 }
 
 .f-info-links a {
@@ -70,3 +79,22 @@
 .card-text {
     font-weight:450 !important;
 }
+
+.listing-link {
+    text-decoration: none;
+}
+
+Card Effect/OverLay Effect
+
+.card-img-overlay {
+    opacity:0;
+}
+
+.card-img-overlay:hover {
+    opacity:0.2;
+    background-color: white;
+}
+
+  
+
+
