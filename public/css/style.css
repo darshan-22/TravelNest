@@ -1,100 +1,106 @@
 body {
-    font-family: "Plus Jakarta Sans", sans-serif !important;
-    display:flex;
-    flex-direction: column;
-    min-height:100vh;
-
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {
-    flex:1;
+  flex: 1;
 }
 
 /* NavBar */
 .navbar {
-    height: 4rem;
-    background-color:whitesmoke;
+  height: 4rem;
+  background-color: whitesmoke;
 }
 
 .fa-mountain-sun {
-    color: #fe424d;
-    font-size: 2rem;
+  color: #fe424d;
+  font-size: 2rem;
 }
 
-.nav-link  {
-    color: #171717 !important;
+.nav-link {
+  color: #171717 !important;
 }
 
 /* Footer */
 .f-info {
-    height:7rem;
-    background-color:whitesmoke;
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
-    text-align:center;
+  height: 7rem;
+  background-color: whitesmoke;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+  text-align: center;
 }
 
-.f-info-links, .f-info-socials, .f-info-brand {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .f-info-socials i {
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-    color: rgb(0, 0, 0);
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  color: rgb(0, 0, 0);
 }
 
 .f-info-links a {
-    text-decoration: none;
-    color:#222222;
+  text-decoration: none;
+  color: #222222;
 }
 
 .f-info-links a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-
-
 
 /* Cards */
 .card {
-    border:none !important;
-    margin-bottom: 2rem;
+  border: none !important;
+  margin-bottom: 2rem;
 }
 
 .card-img-top {
-    border-radius: 1rem !important;
-    width:100% !important;
-    object-fit: cover !important;
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
 }
 
 .card-body {
-    padding:0 !important;
+  padding: 0 !important;
 }
 
 .card-text {
-    font-weight:450 !important;
+  font-weight: 450 !important;
 }
 
 .listing-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-Card Effect/OverLay Effect
+/* Card Effect/OverLay Effect */
 
 .card-img-overlay {
-    opacity:0;
+  opacity: 0;
 }
 
 .card-img-overlay:hover {
-    opacity:0.2;
-    background-color: white;
+  opacity: 0.2;
+  background-color: white;
 }
 
-  
+/* Show Page */
+.show-img {
+  height: 30vh;
+}
 
-
+.card-img-top {
+  width: 100%; /* Make the image fill the width of the card */
+  height: 450px; /* Set a fixed height */
+  object-fit: cover; /* Crop the image to fit the dimensions without distortion */
+}
