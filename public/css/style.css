@@ -102,5 +102,5 @@ body {
 .card-img-top {
   width: 100%; /* Make the image fill the width of the card */
   height: 450px; /* Set a fixed height */
-  object-fit: cover; /* Crop the image to fit the dimensions without distortion */
+  object-fit: cover;
 }
