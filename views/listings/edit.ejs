@@ -3,7 +3,12 @@
   <div class="col offset-1">
     <h3><i>Edit Your Listing!</i></h3>
     <hr />
-    <form method="POST" action="/listings/<%=listing._id%>?_method=PUT">
+    <form
+      method="POST"
+      action="/listings/<%=listing._id%>?_method=PUT"
+      novalidate
+      class="needs-validation"
+    >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -11,11 +16,13 @@
           value="<%=listing.title%>"
           type="text"
           class="form-control"
+          required
         />
+        <div class="valid-feedback">Title looks good!</div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" class="form-control">
+        <textarea name="listing[description]" class="form-control" required>
  <%=listing.description%> </textarea
         >
       </div>
@@ -24,9 +31,11 @@
         <input
           name="listing[image]"
           value="<%=listing.image%>"
-          type="text"
+          type="url"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">A valid image link is required!</div>
       </div>
       <div class="row">
         <div class="mb-3 col-md-4">
@@ -36,7 +45,9 @@
             value="<%=listing.price%>"
             type="number"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Price cannot be left blank!</div>
         </div>
         <div class="mb-3 col-md-8">
           <label for="country" class="form-label">Country</label>
@@ -45,7 +56,9 @@
             value="<%=listing.country%>"
             type="text"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback">Country field cannot be empty!</div>
         </div>
       </div>
       <div class="mb-3">
@@ -55,7 +68,11 @@
           value="<%=listing.location%>"
           type="text"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">
+          Location details are missing. Please provide them!
+        </div>
       </div>
       <button class="btn btn-dark edit-btn">Edit The Listing!</button>
     </form>
