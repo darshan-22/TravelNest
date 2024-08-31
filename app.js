@@ -6,7 +6,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
-const expressError = require("./utils/ExpressError.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/travelnest";
 
@@ -107,12 +107,13 @@ app.delete(
 
 //CHECKS ALL THE ROUTES ABOVE AND IF NO ROUTE IS MATCHED ABOVE , THIS WILL BE EXECUTED
 app.all("*", (req, res, next) => {
-  next(new ExpressError(404, "Page Not Found"));
+  next(new ExpressError("Page Not Found", 404));
 });
 
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong" } = err;
-  res.status(statusCode).send(message);
+  res.status(statusCode).render("error.ejs", { message });
+  // res.status(statusCode).send(message);
 });
 
 app.listen(8080, () => {
