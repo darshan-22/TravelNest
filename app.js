@@ -7,6 +7,7 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
+const { listingSchema } = require("./schema.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/travelnest";
 
@@ -30,6 +31,16 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.get("/", (req, res) => {
   res.send("Welcome to your home page!");
 });
+
+const validateListing = (req, res, next) => {
+  let { error } = listingSchema.validate(req.body);
+  if (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg);
+  } else {
+    next();
+  }
+};
 
 // INDEX ROUTE
 app.get(
@@ -61,10 +72,8 @@ app.get(
 //CREATE ROUTE
 app.post(
   "/listings",
+  validateListing,
   wrapAsync(async (req, res, next) => {
-    if (!req.body.listing) {
-      throw new ExpressError(400, "Send valid data for listing!");
-    }
     const newListing = new Listing(req.body.listing);
     await newListing.save();
     res.redirect("/listings");
@@ -84,10 +93,8 @@ app.get(
 //UPDATE ROUTE
 app.put(
   "/listings/:id",
+  validateListing,
   wrapAsync(async (req, res) => {
-    if (!req.body.listing) {
-      throw new ExpressError(400, "Send valid data for listing!");
-    }
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
     res.redirect(`/listings/${id}`);
