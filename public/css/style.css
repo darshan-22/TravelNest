@@ -103,4 +103,9 @@ body {
   width: 100%; /* Make the image fill the width of the card */
   height: 450px; /* Set a fixed height */
   object-fit: cover;
+  margin-bottom: 14px;
+}
+
+.main-heading {
+  margin-top: -6px;
 }
