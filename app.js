@@ -9,8 +9,10 @@ const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const { listingSchema, reviewSchema } = require("./schema.js");
 const Review = require("./models/review.js");
+const env = require("dotenv").config();
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/travelnest";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/travelnest";
+const dbUrl = process.env.ATLASDB_URL;
 
 main()
   .then(() => {
@@ -19,7 +21,7 @@ main()
   .catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 }
 
 app.set("view engine", "ejs");
@@ -29,9 +31,13 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", (req, res) => {
-  res.send("Welcome to your home page!");
-});
+app.get(
+  "/",
+  wrapAsync(async (req, res) => {
+    const allListings = await Listing.find({});
+    res.render("listings/index.ejs", { allListings });
+  })
+);
 
 const validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
